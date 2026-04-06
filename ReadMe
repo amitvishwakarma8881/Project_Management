@@ -1,0 +1,60 @@
+# 🚀 Project Management App
+
+A full-stack Project Management application built to manage tasks efficiently with authentication and project tracking features.
+
+---
+
+## ✨ Features
+
+* 🔐 User Authentication (Login / Signup)
+* 📁 Create New Projects
+* 📋 View All Projects
+* ✅ Update Project Status (Pending / Completed)
+
+---
+
+## 🛠 Tech Stack
+
+* **Frontend:** React (Vite)
+* **Backend:** Node.js, Express
+* **Database:** MongoDB
+
+---
+
+## 📦 Installation & Setup
+
+```bash
+git clone https://github.com/amitvishwakarma8881/Project_Management.git
+cd Project_Management
+npm install
+npm run dev
+```
+
+---
+
+## 📌 Project Status
+
+🚧 **Day 1 Completed**
+
+* Login & Signup UI created
+* Basic routing setup done
+
+👉 More features coming soon...
+
+---
+
+## 🎯 Goal of this Project
+
+This project is part of my journey to become a **Full Stack Developer** and get a job by building real-world applications and improving my skills in React, Node.js, and MongoDB.
+
+---
+
+## 🙌 Author
+
+**Amit Vishwakarma**
+
+---
+
+## ⭐ Support
+
+If you like this project, feel free to ⭐ the repo and support!
