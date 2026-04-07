@@ -1,51 +1,85 @@
 # 🚀 Project Management App
 
-A full-stack Project Management application built to manage tasks efficiently with authentication and project tracking features.
+A full-stack Project Management application to manage tasks and projects efficiently.
 
 ---
 
 ## ✨ Features
 
 * 🔐 User Authentication (Login / Signup)
-* 📁 Create New Projects
-* 📋 View All Projects
+* 📁 Create Projects
+* 📋 View Project List
 * ✅ Update Project Status (Pending / Completed)
 
 ---
 
 ## 🛠 Tech Stack
 
-* **Frontend:** React (Vite)
-* **Backend:** Node.js, Express
-* **Database:** MongoDB
+### Frontend:
+
+* React (Vite)
+
+### Backend:
+
+* Node.js
+* Express
+
+### Database:
+
+* MongoDB (Coming Soon 🚧)
+
+---
+
+## 📂 Project Structure
+
+```
+Project_Management/
+ ├── backend    # Node.js + Express API
+ ├── src        # React frontend
+ ├── package.json
+```
 
 ---
 
 ## 📦 Installation & Setup
 
+### 1️⃣ Clone repository
+
 ```bash
 git clone https://github.com/amitvishwakarma8881/Project_Management.git
 cd Project_Management
+```
+
+### 2️⃣ Install frontend dependencies
+
+```bash
 npm install
 npm run dev
 ```
 
----
+### 3️⃣ Run backend
 
-## 📌 Project Status
-
-🚧 **Day 1 Completed**
-
-* Login & Signup UI created
-* Basic routing setup done
-
-👉 More features coming soon...
+```bash
+cd backend
+npm install
+node server.js
+```
 
 ---
 
-## 🎯 Goal of this Project
+## 📌 Current Status
 
-This project is part of my journey to become a **Full Stack Developer** and get a job by building real-world applications and improving my skills in React, Node.js, and MongoDB.
+🚧 Day 2 Completed
+
+* Frontend (Login/Signup UI)
+* Backend setup (Express server)
+* Frontend ↔ Backend connection
+
+---
+
+## 🎯 Goal
+
+To build a complete full-stack project and become job-ready by April 2026.
 
 ---
 
@@ -57,4 +91,4 @@ This project is part of my journey to become a **Full Stack Developer** and get 
 
 ## ⭐ Support
 
-If you like this project, feel free to ⭐ the repo and support!
+If you like this project, give it a ⭐ on GitHub!
