@@ -1,6 +1,9 @@
 import express from "express";
 import cors from "cors";
 import mongoose from "mongoose";
+import dotenv from "dotenv";
+
+dotenv.config();
 
 const app = express();
 
@@ -8,7 +11,7 @@ app.use(cors());
 app.use(express.json());
 
 /* 🔥 MongoDB Connection */
-mongoose.connect("mongodb+srv://Amitvish:Amit8881@cluster0.pgfceud.mongodb.net/project_management")
+mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log("MongoDB Connected ✅"))
   .catch((err) => console.log(err));
 
@@ -28,18 +31,12 @@ app.get("/", (req, res) => {
   res.send("Backend is running 🚀");
 });
 
+// Login API
 app.post("/login", async (req, res) => {
-  console.log("BODY:", req.body);
-
-  const email = req.body.email?.trim();
+  const email = req.body.email?.trim().toLowerCase();
   const password = req.body.password?.trim();
 
-  console.log("EMAIL:", email);
-  console.log("PASSWORD:", password);
-
   const user = await User.findOne({ email });
-
-  console.log("FOUND USER:", user);
 
   if (!user) {
     return res.status(400).send("User not found ❌");
@@ -55,8 +52,14 @@ app.post("/login", async (req, res) => {
 // Signup API
 app.post("/signup", async (req, res) => {
   try {
-    const user = new User(req.body);
+    const data = {
+      ...req.body,
+      email: req.body.email.toLowerCase()
+    };
+
+    const user = new User(data);
     await user.save();
+
     res.send("User saved successfully ✅");
   } catch (err) {
     res.status(500).send(err);
