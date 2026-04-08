@@ -69,14 +69,14 @@ node server.js
 
 ## 📌 Current Status
 
-Frontend (Login/Signup UI) completed ✅
-Backend setup with Express completed ✅
-MongoDB Atlas connected successfully ✅
-User Signup API working (data stored in database) ✅
-User Login API working properly ✅
-Login validation fixed (email & password match) ✅
-Environment variables (.env) implemented for security ✅
-Database credentials secured 🔐
+- Frontend (Login/Signup UI) completed ✅  
+- Backend setup with Express completed ✅  
+- MongoDB Atlas connected successfully ✅  
+- User Signup API working (data stored in database) ✅  
+- User Login API working properly ✅  
+- Login validation fixed (email & password match) ✅  
+- Environment variables (.env) implemented for security ✅  
+- Database credentials secured 🔐  
 
 ---
 
