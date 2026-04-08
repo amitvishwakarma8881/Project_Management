@@ -1,52 +1,81 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function Login() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleLogin = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:5000/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ email, password })
+      });
+
+      if (res.ok) {
+        alert("Login Successful ✅");
+      } else {
+        alert("Invalid Credentials ❌");
+      }
+    } catch (err) {
+      alert("Server Error ❌");
+    }
+  };
+
   return (
-    <div style={styles.container}>
-      <h2>Login</h2>
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh"
+    }}>
+      <form
+        onSubmit={handleLogin}
+        style={{
+          padding: "20px",
+          border: "1px solid #ccc",
+          borderRadius: "10px",
+          width: "300px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px"
+        }}
+      >
+        <h2 style={{ textAlign: "center" }}>Login</h2>
 
-      <input type="email" placeholder="Enter Email" style={styles.input} />
-      <input type="password" placeholder="Enter Password" style={styles.input} />
+        <input
+          type="email"
+          placeholder="Enter Email"
+          onChange={(e) => setEmail(e.target.value.trim())}
+          style={{ padding: "8px" }}
+        />
 
-      <button style={styles.button}>Login</button>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          onChange={(e) => setPassword(e.target.value.trim())}
+          style={{ padding: "8px" }}
+        />
 
-      <p>
-        Don't have an account?{" "}
-        <Link to="/signup" style={styles.link}>Sign up</Link>
-      </p>
+        <button
+          type="submit"
+          style={{
+            padding: "10px",
+            background: "black",
+            color: "white",
+            border: "none",
+            borderRadius: "5px"
+          }}
+        >
+          Login
+        </button>
+      </form>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    width: "320px",
-    margin: "80px auto",
-    padding: "20px",
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    textAlign: "center",
-    boxShadow: "0 0 10px rgba(0,0,0,0.1)"
-  },
-  input: {
-    width: "100%",
-    padding: "10px",
-    margin: "10px 0",
-    fontSize: "14px"
-  },
-  button: {
-    width: "100%",
-    padding: "10px",
-    backgroundColor: "#4CAF50",
-    color: "white",
-    border: "none",
-    cursor: "pointer"
-  },
-  link: {
-    color: "blue",
-    textDecoration: "none"
-  }
-};
 
 export default Login;

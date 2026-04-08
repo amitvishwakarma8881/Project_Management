@@ -1,53 +1,89 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
 
 function Signup() {
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+
+    try {
+      const res = await fetch("http://localhost:5000/signup", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ name, email, password })
+      });
+
+      if (res.ok) {
+        alert("Signup Successful ✅");
+      } else {
+        alert("Signup Failed ❌");
+      }
+    } catch (err) {
+      alert("Server Error ❌");
+    }
+  };
+
   return (
-    <div style={styles.container}>
-      <h2>Signup</h2>
+    <div style={{
+      display: "flex",
+      justifyContent: "center",
+      alignItems: "center",
+      height: "100vh"
+    }}>
+      <form
+        onSubmit={handleSignup}
+        style={{
+          padding: "20px",
+          border: "1px solid #ccc",
+          borderRadius: "10px",
+          width: "300px",
+          display: "flex",
+          flexDirection: "column",
+          gap: "10px"
+        }}
+      >
+        <h2 style={{ textAlign: "center" }}>Signup</h2>
 
-      <input type="text" placeholder="Enter Name" style={styles.input} />
-      <input type="email" placeholder="Enter Email" style={styles.input} />
-      <input type="password" placeholder="Enter Password" style={styles.input} />
+        <input
+          type="text"
+          placeholder="Enter Name"
+          onChange={(e) => setName(e.target.value)}
+          style={{ padding: "8px" }}
+        />
 
-      <button style={styles.button}>Sign up</button>
+        <input
+          type="email"
+          placeholder="Enter Email"
+          onChange={(e) => setEmail(e.target.value)}
+          style={{ padding: "8px" }}
+        />
 
-      <p>
-        Already have an account?{" "}
-        <Link to="/" style={styles.link}>Login</Link>
-      </p>
+        <input
+          type="password"
+          placeholder="Enter Password"
+          onChange={(e) => setPassword(e.target.value)}
+          style={{ padding: "8px" }}
+        />
+
+        <button
+          type="submit"
+          style={{
+            padding: "10px",
+            background: "black",
+            color: "white",
+            border: "none",
+            borderRadius: "5px"
+          }}
+        >
+          Signup
+        </button>
+      </form>
     </div>
   );
 }
-
-const styles = {
-  container: {
-    width: "320px",
-    margin: "80px auto",
-    padding: "20px",
-    border: "1px solid #ddd",
-    borderRadius: "8px",
-    textAlign: "center",
-    boxShadow: "0 0 10px rgba(0,0,0,0.1)"
-  },
-  input: {
-    width: "100%",
-    padding: "10px",
-    margin: "10px 0",
-    fontSize: "14px"
-  },
-  button: {
-    width: "100%",
-    padding: "10px",
-    backgroundColor: "#2196F3",
-    color: "white",
-    border: "none",
-    cursor: "pointer"
-  },
-  link: {
-    color: "blue",
-    textDecoration: "none"
-  }
-};
 
 export default Signup;
