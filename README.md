@@ -7,9 +7,10 @@ A full-stack Project Management application to manage tasks and projects efficie
 ## ✨ Features
 
 * 🔐 User Authentication (Login / Signup)
-* 📁 Create Projects
-* 📋 View Project List
-* ✅ Update Project Status (Pending / Completed)
+* 👨‍💼 Role-based Access (Admin / User)
+* 📁 Create Projects (Admin Only)
+* 📋 View Project List (User & Admin)
+* 🎨 Clean & Modern UI (Login, Signup, Dashboard)
 
 ---
 
@@ -26,7 +27,7 @@ A full-stack Project Management application to manage tasks and projects efficie
 
 ### Database:
 
-* MongoDB (Coming Soon 🚧)
+* MongoDB Atlas
 
 ---
 
@@ -69,20 +70,23 @@ node server.js
 
 ## 📌 Current Status
 
-- Frontend (Login/Signup UI) completed ✅  
-- Backend setup with Express completed ✅  
-- MongoDB Atlas connected successfully ✅  
-- User Signup API working (data stored in database) ✅  
-- User Login API working properly ✅  
-- Login validation fixed (email & password match) ✅  
-- Environment variables (.env) implemented for security ✅  
-- Database credentials secured 🔐  
+* Frontend (Login/Signup UI) completed ✅
+* Backend setup with Express completed ✅
+* MongoDB Atlas connected successfully ✅
+* User Signup & Login APIs working ✅
+* Role-based authentication (Admin/User) implemented ✅
+* Admin Dashboard created ✅
+* User Dashboard created ✅
+* Add Project feature implemented (Admin only) ✅
+* Project APIs (create & fetch) working ✅
+* UI improved with modern design 🎨
 
 ---
 
 ## 🎯 Goal
 
-To build a complete full-stack project.
+To build a complete full-stack project with professional UI and advanced features.
+
 ---
 
 ## 🙌 Author
