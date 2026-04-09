@@ -1,78 +1,84 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
 
   const handleLogin = async (e) => {
     e.preventDefault();
 
-    try {
-      const res = await fetch("http://localhost:5000/login", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ email, password })
-      });
+    const res = await fetch("http://localhost:5000/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ email, password })
+    });
 
-      if (res.ok) {
-        alert("Login Successful ✅");
+    const data = await res.json();
+
+    if (res.ok) {
+      localStorage.setItem("role", data.role);
+
+      if (data.role === "admin") {
+        navigate("/admin-dashboard");
       } else {
-        alert("Invalid Credentials ❌");
+        navigate("/user-dashboard");
       }
-    } catch (err) {
-      alert("Server Error ❌");
+    } else {
+      alert(data);
     }
   };
 
   return (
     <div style={{
+      height: "100vh",
       display: "flex",
       justifyContent: "center",
       alignItems: "center",
-      height: "100vh"
+      background: "linear-gradient(to right, #667eea, #764ba2)"
     }}>
-      <form
-        onSubmit={handleLogin}
-        style={{
-          padding: "20px",
-          border: "1px solid #ccc",
-          borderRadius: "10px",
-          width: "300px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "10px"
-        }}
-      >
+      <form onSubmit={handleLogin} style={{
+        background: "white",
+        padding: "30px",
+        borderRadius: "10px",
+        width: "300px",
+        boxShadow: "0 5px 15px rgba(0,0,0,0.2)"
+      }}>
         <h2 style={{ textAlign: "center" }}>Login</h2>
 
         <input
-          type="email"
-          placeholder="Enter Email"
-          onChange={(e) => setEmail(e.target.value.trim())}
-          style={{ padding: "8px" }}
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+          style={{ width: "100%", padding: "10px", margin: "10px 0" }}
         />
 
         <input
           type="password"
-          placeholder="Enter Password"
-          onChange={(e) => setPassword(e.target.value.trim())}
-          style={{ padding: "8px" }}
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+          style={{ width: "100%", padding: "10px", margin: "10px 0" }}
         />
 
-        <button
-          type="submit"
-          style={{
-            padding: "10px",
-            background: "black",
-            color: "white",
-            border: "none",
-            borderRadius: "5px"
-          }}
-        >
+        <button style={{
+          width: "100%",
+          padding: "10px",
+          background: "#667eea",
+          color: "white",
+          border: "none",
+          borderRadius: "5px"
+        }}>
           Login
         </button>
+
+        <p
+          onClick={() => navigate("/signup")}
+          style={{ textAlign: "center", marginTop: "10px", cursor: "pointer" }}
+        >
+          Signup
+        </p>
       </form>
     </div>
   );
