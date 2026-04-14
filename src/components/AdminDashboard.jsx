@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API = "https://project-management-myjp.onrender.com"; // ✅ UPDATED
+
 function AdminDashboard() {
   const [tab, setTab] = useState("projects");
   const [projects, setProjects] = useState([]);
@@ -26,13 +28,13 @@ function AdminDashboard() {
 
   useEffect(() => {
     loadProjects();
-    fetch("http://localhost:5000/users")
+    fetch(`${API}/users`)
       .then(res => res.json())
       .then(setUsers);
   }, []);
 
   const loadProjects = async () => {
-    const res = await fetch("http://localhost:5000/projects");
+    const res = await fetch(`${API}/projects`);
     const data = await res.json();
     setProjects(data);
   };
@@ -43,7 +45,7 @@ function AdminDashboard() {
   };
 
   const addProject = async () => {
-    await fetch("http://localhost:5000/add-project", {
+    await fetch(`${API}/add-project`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(form)
@@ -54,7 +56,7 @@ function AdminDashboard() {
   };
 
   const deleteProject = async (id) => {
-    await fetch(`http://localhost:5000/delete-project/${id}`, {
+    await fetch(`${API}/delete-project/${id}`, {
       method: "DELETE"
     });
 
@@ -72,7 +74,7 @@ function AdminDashboard() {
   };
 
   const updateProject = async () => {
-    await fetch(`http://localhost:5000/edit-project/${editingProject._id}`, {
+    await fetch(`${API}/edit-project/${editingProject._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(editForm)
@@ -104,7 +106,6 @@ function AdminDashboard() {
       }}>
         <div>
           <h2 style={{ textAlign: "center" }}>Admin Panel</h2>
-          
 
           <button onClick={() => setTab("projects")} style={btnStyle}>Projects</button>
           <button onClick={() => setTab("create")} style={btnStyle}>Create</button>
@@ -136,13 +137,9 @@ function AdminDashboard() {
               <div style={statCard}>Done<br /><b>{stats.done}</b></div>
             </div>
 
-            {/* PROJECT CARDS */}
             <div style={grid}>
               {projects.map(p => (
-                <div key={p._id} style={card}
-                  onMouseEnter={e => hoverIn(e)}
-                  onMouseLeave={e => hoverOut(e)}
-                >
+                <div key={p._id} style={card}>
                   <h3>{p.title}</h3>
                   <p>{p.description}</p>
 
@@ -205,7 +202,7 @@ function AdminDashboard() {
   );
 }
 
-/* STYLES */
+/* STYLES SAME */
 const btnStyle = { padding: 8, margin: 5, border: "none", borderRadius: 6, background: "#3498db", color: "white", cursor: "pointer" };
 const logoutStyle = { background: "#e74c3c", padding: 10, border: "none", color: "white", borderRadius: 6 };
 const headerStyle = { background: "white", padding: 15, borderRadius: 10, marginBottom: 20, display: "flex", justifyContent: "space-between" };
@@ -217,8 +214,6 @@ const input = { width: "100%", padding: 10, marginBottom: 10, borderRadius: 6, b
 const formBox = { background: "white", padding: 20, borderRadius: 10 };
 const overlay = { position: "fixed", top: 0, left: 0, width: "100%", height: "100%", background: "rgba(0,0,0,0.5)", display: "flex", justifyContent: "center", alignItems: "center" };
 const modal = { background: "white", padding: 20, borderRadius: 10, width: 320 };
-const hoverIn = e => { e.currentTarget.style.transform = "translateY(-5px)"; };
-const hoverOut = e => { e.currentTarget.style.transform = "translateY(0)"; };
 const statusStyle = (s) => ({
   padding: "5px 10px",
   borderRadius: 20,
