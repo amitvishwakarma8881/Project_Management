@@ -1,16 +1,38 @@
 # 🚀 Project Management App
 
-A full-stack Project Management application to manage tasks and projects efficiently.
+A full-stack **Project Management System** built to manage tasks, assign projects, and track progress efficiently with a clean and modern UI.
 
 ---
 
 ## ✨ Features
 
-* 🔐 User Authentication (Login / Signup)
-* 👨‍💼 Role-based Access (Admin / User)
-* 📁 Create Projects (Admin Only)
-* 📋 View Project List (User & Admin)
-* 🎨 Clean & Modern UI (Login, Signup, Dashboard)
+### 🔐 Authentication
+
+* User Signup & Login
+* Role-based Access (Admin / User)
+* Persistent login using localStorage
+
+---
+
+### 👨‍💼 Admin Panel
+
+* Create new projects
+* Assign projects to users
+* Edit project details (full form)
+* Delete projects
+* View all projects
+* Dashboard with project statistics
+* Personalized welcome message
+
+---
+
+### 👤 User Panel
+
+* View assigned projects
+* Update project status (Pending / In Progress / Completed)
+* Clean dashboard UI
+* Personalized welcome message
+* Logout functionality
 
 ---
 
@@ -19,15 +41,17 @@ A full-stack Project Management application to manage tasks and projects efficie
 ### Frontend:
 
 * React (Vite)
+* React Router
+* Inline CSS (No external libraries)
 
 ### Backend:
 
 * Node.js
-* Express
+* Express.js
 
 ### Database:
 
-* MongoDB Atlas
+* MongoDB Atlas (Mongoose)
 
 ---
 
@@ -35,8 +59,8 @@ A full-stack Project Management application to manage tasks and projects efficie
 
 ```
 Project_Management/
- ├── backend    # Node.js + Express API
- ├── src        # React frontend
+ ├── backend        # Node.js + Express API
+ ├── src            # React frontend
  ├── package.json
 ```
 
@@ -51,14 +75,18 @@ git clone https://github.com/amitvishwakarma8881/Project_Management.git
 cd Project_Management
 ```
 
-### 2️⃣ Install frontend dependencies
+---
+
+### 2️⃣ Install Frontend
 
 ```bash
 npm install
 npm run dev
 ```
 
-### 3️⃣ Run backend
+---
+
+### 3️⃣ Run Backend
 
 ```bash
 cd backend
@@ -70,22 +98,26 @@ node server.js
 
 ## 📌 Current Status
 
-* Frontend (Login/Signup UI) completed ✅
-* Backend setup with Express completed ✅
-* MongoDB Atlas connected successfully ✅
-* User Signup & Login APIs working ✅
-* Role-based authentication (Admin/User) implemented ✅
-* Admin Dashboard created ✅
-* User Dashboard created ✅
-* Add Project feature implemented (Admin only) ✅
-* Project APIs (create & fetch) working ✅
-* UI improved with modern design 🎨
+* Full Authentication System implemented ✅
+* Role-based routing (Admin/User) ✅
+* Admin Dashboard (Create / Edit / Delete projects) ✅
+* User Dashboard (View & update status) ✅
+* Project assignment system working ✅
+* Status update functionality working ✅
+* Personalized welcome message added ✅
+* UI improved with modern card design 🎨
+* Responsive layout and clean UX ✅
 
 ---
 
-## 🎯 Goal
+## 🎯 Future Improvements
 
-To build a complete full-stack project with professional UI and advanced features.
+* JWT Authentication 🔐
+* Protected Routes
+* Notifications 🔔
+* Search & Filter Projects
+* Dark Mode 🌙
+* Deployment (Vercel + Render)
 
 ---
 
